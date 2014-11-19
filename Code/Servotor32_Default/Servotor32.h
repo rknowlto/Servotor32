@@ -31,11 +31,12 @@ public:
   
   void changeServo(byte, short);
   
-  void printStatus(Stream*);
+  void printStatus();
   
-  void process(Stream*);
+  void processChar(char);
   
   float ping();
+  void arcPing();
   float multiPing(unsigned short);
 
 private:

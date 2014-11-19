@@ -30,9 +30,14 @@ void loop() {
     //Serial.print("CM: ");
     //Serial.println(hexy.ping());
     //hexy.delay_ms(200); // wait 200mS
-    
-    hexy.process(&Serial); //process input from the USB
-    hexy.process(&Serial1); //process input from the board serial (i.e. bluetooth)
+    if(Serial.available()) { //process input from the USB
+      char inChar = (char)Serial.read();
+      hexy.processChar(inChar);
+    }
+    if(Serial1.available()){ //process input from the board serial (i.e. bluetooth)
+      char inChar = (char)Serial1.read();
+      hexy.processChar(inChar);
+    }
   }
   
 }
